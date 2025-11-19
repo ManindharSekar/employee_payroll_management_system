@@ -1,0 +1,9 @@
+package com.employeepayroll.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.employeepayroll.entity.LeaveRule;
+
+public interface LeaveTypeRepository extends JpaRepository<LeaveRule,Long> {
+
+}

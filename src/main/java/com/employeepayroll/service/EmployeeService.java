@@ -6,7 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.employeepayroll.entity.Employee;
-import com.employeepayroll.exception.EmployeeNotFoundException;
+import com.employeepayroll.exception.RecordNotFoundException;
 import com.employeepayroll.repository.EmployeeRepository;
 
 @Service
@@ -25,7 +25,7 @@ public class EmployeeService {
 
 	public Employee  getEmployee(Long id) {
 		// TODO Auto-generated method stub
-		return employeeRepository.findById(id).orElseThrow(()-> new EmployeeNotFoundException("Employee Not Found"));
+		return employeeRepository.findById(id).orElseThrow(()-> new RecordNotFoundException("Employee Not Found"));
 	}
 
 }

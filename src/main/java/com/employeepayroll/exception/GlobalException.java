@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 @ControllerAdvice
 public class GlobalException extends RuntimeException {
 
-	@ExceptionHandler(EmployeeNotFoundException.class)
-	public ResponseEntity<ApiResponse<Object>> handleNotFound(EmployeeNotFoundException ex) {
+	@ExceptionHandler(RecordNotFoundException.class)
+	public ResponseEntity<ApiResponse<Object>> handleNotFound(RecordNotFoundException ex) {
 		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ApiResponse<>(false, ex.getMessage(), null));
 	}
 
