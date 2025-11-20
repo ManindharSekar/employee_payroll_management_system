@@ -24,7 +24,7 @@ public class Allowances {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@NotBlank(message="name Type is Required")
+	@NotBlank(message="Allowance Type is Required")
 	@Column(unique = true)
 	private String name;
 
@@ -34,8 +34,7 @@ public class Allowances {
 	@NotNull(message = "value is Required")
 	private double value;
 	
-	@ManyToMany
-	List<Employee> employees;
+	
 
 	public Long getId() {
 		return id;
@@ -61,14 +60,7 @@ public class Allowances {
 		this.value = value;
 	}
 
-	public List<Employee> getEmployees() {
-		return employees;
-	}
 
-	public void setEmployees(List<Employee> employees) {
-		this.employees = employees;
-	}
-	
 	public String getName() {
 		return name;
 	}

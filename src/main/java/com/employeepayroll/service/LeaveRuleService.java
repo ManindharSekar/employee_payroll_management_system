@@ -23,7 +23,6 @@ public class LeaveRuleService {
 
 	public LeaveRule getLeaveRule(Long id) {
 		// TODO Auto-generated method stub
-		
 		return leaveRuleRepository.findById(id).orElseThrow(()->new RecordNotFoundException("LeaveRule id="+id+" not found"));
 	}
 

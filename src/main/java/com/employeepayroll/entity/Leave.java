@@ -29,7 +29,8 @@ public class Leave {
 	private String leaveType;
 	
 	@NotNull(message="Days is Required")
-	private LocalDate days;
+	private int days;
+	
 	
 	@ManyToOne
 	private Employee employee;
@@ -50,14 +51,6 @@ public class Leave {
 		this.leaveType = leaveType;
 	}
 
-	public LocalDate getDays() {
-		return days;
-	}
-
-	public void setDays(LocalDate days) {
-		this.days = days;
-	}
-
 	public Employee getEmployee() {
 		return employee;
 	}
@@ -65,5 +58,14 @@ public class Leave {
 	public void setEmployee(Employee employee) {
 		this.employee = employee;
 	}
+	
+	public int getDays() {
+		return days;
+	}
+
+	public void setDays(int days) {
+		this.days = days;
+	}
+
 
 }

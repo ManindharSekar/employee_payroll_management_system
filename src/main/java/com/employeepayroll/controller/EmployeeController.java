@@ -17,20 +17,20 @@ import jakarta.validation.Valid;
 @RestController
 @RequestMapping("/employee")
 public class EmployeeController {
-	
+
 	@Autowired
 	private EmployeeService employeeService;
-	
+
 	@PostMapping("/addEmployee")
 	public ResponseEntity<Employee> addEmployee(@Valid @RequestBody Employee employee) {
 
-        return employeeService.addEmployee(employee);
+		return employeeService.addEmployee(employee);
 	}
-	
+
 	@GetMapping("/getEmployee/{id}")
 	public Employee getEmployee(@PathVariable Long id) {
 		return employeeService.getEmployee(id);
-		
+
 	}
 
 }
