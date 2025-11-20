@@ -1,7 +1,8 @@
 package com.employeepayroll.entity;
 
-import java.time.LocalDate;
+import java.time.Year;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -10,25 +11,37 @@ import jakarta.validation.constraints.NotNull;
 
 @Entity
 public class LeaveRule {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
-	@NotNull(message = "Yeear is Required")
-	private LocalDate year;
-	
-	@NotNull(message = "NoOfDays is Required")
-	private int noOfDays;
-	
-	@NotNull(message = "NoOfGovLeaves is REquired")
-	private int noOfGovLeave;
-	
-	@NotNull(message = "NoOfWorkingDays is Required")
-	private int noOfWorkingDays;
-	
-	@NotNull(message = "NoOfLeaveTaken isRequired")
-	private int noOfLeaveTaken;
+
+	@NotNull(message = "Year is Required")
+	@Column(unique = true)
+	private Year year;
+
+	@NotNull(message = "totalDays is Required")
+	private int totalDays;
+
+	@NotNull(message = "totalGovLeaves is Required")
+	private int totalGovLeaves;
+
+	@NotNull(message = "totalWeekLeaves is Required")
+	private int totalWeekLeaves;
+
+	@NotNull(message = "totalWorkingDays is Required")
+	private int totalWorkingDays;
+
+	@NotNull(message = "annualLeaveLimit is Required")
+	private int annualLeaveLimit;
+
+	public int getAnnualLeaveLimit() {
+		return annualLeaveLimit;
+	}
+
+	public void setAnnualLeaveLimit(int annualLeaveLimit) {
+		this.annualLeaveLimit = annualLeaveLimit;
+	}
 
 	public Long getId() {
 		return id;
@@ -38,46 +51,44 @@ public class LeaveRule {
 		this.id = id;
 	}
 
-	public LocalDate getYear() {
+	public int getTotalDays() {
+		return totalDays;
+	}
+
+	public void setTotalDays(int totalDays) {
+		this.totalDays = totalDays;
+	}
+
+	public int getTotalGovLeaves() {
+		return totalGovLeaves;
+	}
+
+	public void setTotalGovLeaves(int totalGovLeaves) {
+		this.totalGovLeaves = totalGovLeaves;
+	}
+
+	public int getTotalWeekLeaves() {
+		return totalWeekLeaves;
+	}
+
+	public void setTotalWeekLeaves(int totalWeekLeaves) {
+		this.totalWeekLeaves = totalWeekLeaves;
+	}
+
+	public int getTotalWorkingDays() {
+		return totalWorkingDays;
+	}
+
+	public void setTotalWorkingDays(int totalWorkingDays) {
+		this.totalWorkingDays = totalWorkingDays;
+	}
+
+	public Year getYear() {
 		return year;
 	}
 
-	public void setYear(LocalDate year) {
+	public void setYear(Year year) {
 		this.year = year;
 	}
-
-	public int getNoOfDays() {
-		return noOfDays;
-	}
-
-	public void setNoOfDays(int noOfDays) {
-		this.noOfDays = noOfDays;
-	}
-
-	public int getNoOfGovLeave() {
-		return noOfGovLeave;
-	}
-
-	public void setNoOfGovLeave(int noOfGovLeave) {
-		this.noOfGovLeave = noOfGovLeave;
-	}
-
-	public int getNoOfWorkingDays() {
-		return noOfWorkingDays;
-	}
-
-	public void setNoOfWorkingDays(int noOfWorkingDays) {
-		this.noOfWorkingDays = noOfWorkingDays;
-	}
-
-	public int getNoOfLeaveTaken() {
-		return noOfLeaveTaken;
-	}
-
-	public void setNoOfLeaveTaken(int noOfLeaveTaken) {
-		this.noOfLeaveTaken = noOfLeaveTaken;
-	}
-	
-	
 
 }

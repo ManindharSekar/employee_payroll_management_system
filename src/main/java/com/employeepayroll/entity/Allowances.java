@@ -2,6 +2,7 @@ package com.employeepayroll.entity;
 
 import java.util.List;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -23,11 +24,15 @@ public class Allowances {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@NotBlank(message="Allowance Type is Required")
-	private String allowanceType;
+	@NotBlank(message="name Type is Required")
+	@Column(unique = true)
+	private String name;
+
+	@NotBlank(message = "amountType is Required")
+	private String amountType;
 	
-	@NotNull
-	private double pay;
+	@NotNull(message = "value is Required")
+	private double value;
 	
 	@ManyToMany
 	List<Employee> employees;
@@ -39,21 +44,21 @@ public class Allowances {
 	public void setId(Long id) {
 		this.id = id;
 	}
-
-	public String getAllowanceType() {
-		return allowanceType;
+	
+	public String getAmountType() {
+		return amountType;
 	}
 
-	public void setAllowanceType(String allowanceType) {
-		this.allowanceType = allowanceType;
+	public void setAmountType(String amountType) {
+		this.amountType = amountType;
 	}
 
-	public double getPay() {
-		return pay;
+	public double getValue() {
+		return value;
 	}
 
-	public void setPay(double pay) {
-		this.pay = pay;
+	public void setValue(double value) {
+		this.value = value;
 	}
 
 	public List<Employee> getEmployees() {
@@ -62,6 +67,14 @@ public class Allowances {
 
 	public void setEmployees(List<Employee> employees) {
 		this.employees = employees;
+	}
+	
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 }

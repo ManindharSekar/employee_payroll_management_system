@@ -17,29 +17,27 @@ import com.employeepayroll.service.AllowenceService;
 @RestController
 @RequestMapping("allowance")
 public class AllowanceController {
-	
+
 	@Autowired
 	private AllowenceService allowanceService;
-	
+
 	@PostMapping("/addAllowance")
-	public ResponseEntity<String> addAllowence(@RequestBody Allowances allowances){
+	public ResponseEntity<String> addAllowence(@RequestBody Allowances allowances) {
 		return allowanceService.addAllowance(allowances);
 	}
-	
+
 	@GetMapping("/getAllowance/{id}")
 	public Allowances getAllowance(@PathVariable Long id) {
 		return allowanceService.getAllowance(id);
 	}
-	
+
 	@PutMapping("updateAllowance/{id}")
-	public ResponseEntity<String> updateAllowance(@PathVariable Long id,@RequestBody Allowances update) {
-		//TODO: process PUT request
-		
-		return allowanceService.updateAllowance(id,update);
+	public ResponseEntity<String> updateAllowance(@PathVariable Long id, @RequestBody Allowances update) {
+		return allowanceService.updateAllowance(id, update);
 	}
-	
+
 	@DeleteMapping("deleteAllowance/{id}")
-	public ResponseEntity<String> deleteAllowance(@PathVariable Long id){
+	public ResponseEntity<String> deleteAllowance(@PathVariable Long id) {
 		return allowanceService.deleteAllowance(id);
 	}
 

@@ -3,6 +3,9 @@ package com.employeepayroll.entity;
 import java.time.LocalDate;
 import java.util.List;
 
+import org.hibernate.type.TrueFalseConverter;
+
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -10,6 +13,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.PastOrPresent;
@@ -41,11 +45,13 @@ public class Employee {
 
 	@NotBlank(message = " Account NO is Required")
 	@Size(max = 8,message = "maximum 8 character")
+	@Column(unique = true)
 	private String acc_No;
 
 	@NotBlank(message = "PF number is Required")
 	@Size(max = 6,message = "maximum 6 digit")
 	@Pattern(regexp = "^[0-9]+$",message = "PF number must contains numbers only digits")
+	@Column(unique = true)
 	private String pf_No;
 
 	@NotNull(message = "Join date is required")
@@ -55,6 +61,17 @@ public class Employee {
 	@ManyToMany
 	@JoinTable(name = "emp_Allowance", joinColumns = @JoinColumn(name = "employee_id"), inverseJoinColumns = @JoinColumn(name = "allowance_id"))
 	private List<Allowances> allowances;
+	
+	@ManyToOne
+	private LeaveRule leaveRule;
+
+	public LeaveRule getLeaveRule() {
+		return leaveRule;
+	}
+
+	public void setLeaveRule(LeaveRule leaveRule) {
+		this.leaveRule = leaveRule;
+	}
 
 	public Long getId() {
 		return id;
