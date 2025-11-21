@@ -11,25 +11,19 @@ import com.employeepayroll.entity.Allowances;
 import com.employeepayroll.entity.Employee;
 import com.employeepayroll.entity.Leave;
 import com.employeepayroll.entity.Payroll;
-import com.employeepayroll.repository.LeaveRepository;
 import com.employeepayroll.repository.PayrollRepository;
 
 @Service
 public class PayrollService {
 
-
 	@Autowired
 	private PayrollRepository payrollRepository;
-	@Autowired
-	private LeaveRepository leaveRepository;
 
 	@Autowired
 	private EmployeeService employeeService;
-	
+
 	@Autowired
 	private LeaveService leaveService;
-
- 
 
 	public ResponseEntity<String> addPayRoll(Payroll payRoll) {
 		// TODO Auto-generated method stub
@@ -39,11 +33,10 @@ public class PayrollService {
 			double total = 0;
 			double deduction = 0;
 			double value = 0;
-			
+
 			List<Leave> lastOneMonthData = leaveService.getLastOneMonthData(payRoll.getDate());
 			Employee employee = payRoll.getEmployee();
 			double empSalary = employeeService.getEmpSalary(employee.getId());
-		//	List<Leave> employees = leaveRepository.findByEmployee(employee);
 			for (Leave emp : lastOneMonthData) {
 				days += emp.getDays();
 			}

@@ -15,20 +15,18 @@ import com.employeepayroll.service.LeaveRuleService;
 @RestController
 @RequestMapping("leaveRule")
 public class LeaveRuleController {
-	
+
 	@Autowired
 	private LeaveRuleService leaveRuleService;
-	
+
 	@PostMapping("/addLeaveRule")
-	public ResponseEntity<String> addLeaveRule(@RequestBody LeaveRule leaveRule){
-		return leaveRuleService.addLeaveRule(leaveRule); 
+	public ResponseEntity<String> addLeaveRule(@RequestBody LeaveRule leaveRule) {
+		return leaveRuleService.addLeaveRule(leaveRule);
 	}
-	
+
 	@GetMapping("/getLeaveRule/{id}")
 	public LeaveRule getLeaveRule(@PathVariable Long id) {
 		return leaveRuleService.getLeaveRule(id);
 	}
-	
-   
 
 }

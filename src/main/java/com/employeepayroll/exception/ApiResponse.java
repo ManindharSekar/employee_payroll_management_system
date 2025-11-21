@@ -5,11 +5,11 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class ApiResponse <T>{
+public class ApiResponse<T> {
 
 	private boolean success;
-    private String message;
-    private T data;
+	private String message;
+	private T data;
 
 	public boolean isSuccess() {
 		return success;
@@ -41,6 +41,5 @@ public class ApiResponse <T>{
 		this.message = message;
 		this.data = data;
 	}
-
 
 }

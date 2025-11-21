@@ -21,7 +21,7 @@ public class LeaveService {
 
 	@Autowired
 	private LeaveRepository leaveRepository;
-	
+
 	@Autowired
 	private EmployeeRepository employeeRepository;
 
@@ -43,16 +43,16 @@ public class LeaveService {
 
 	public List<Leave> getEmpLeave(Long id) {
 		// TODO Auto-generated method stub
-		
-		Employee empId = employeeRepository.findById(id).orElseThrow(()->new RecordNotFoundException("Employee id Not Found"));
+
+		Employee empId = employeeRepository.findById(id)
+				.orElseThrow(() -> new RecordNotFoundException("Employee id Not Found"));
 		List<Leave> byEmployee = leaveRepository.findByEmployee(empId);
 		return byEmployee;
 	}
-	
-	public List<Leave> getLastOneMonthData(LocalDate inputDate) {
-	    LocalDate oneMonthBefore = inputDate.minusMonths(1);
-	    return leaveRepository.findBytoDateBetween(oneMonthBefore, inputDate);
-	}
 
+	public List<Leave> getLastOneMonthData(LocalDate inputDate) {
+		LocalDate oneMonthBefore = inputDate.minusMonths(1);
+		return leaveRepository.findBytoDateBetween(oneMonthBefore, inputDate);
+	}
 
 }

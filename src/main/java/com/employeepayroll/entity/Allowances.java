@@ -1,13 +1,10 @@
 package com.employeepayroll.entity;
 
-import java.util.List;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -19,22 +16,20 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Allowances {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
-	@NotBlank(message="Allowance Type is Required")
+
+	@NotBlank(message = "Allowance Type is Required")
 	@Column(unique = true)
 	private String name;
 
 	@NotBlank(message = "amountType is Required")
 	private String amountType;
-	
+
 	@NotNull(message = "value is Required")
 	private double value;
-	
-	
 
 	public Long getId() {
 		return id;
@@ -43,7 +38,7 @@ public class Allowances {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	
+
 	public String getAmountType() {
 		return amountType;
 	}
@@ -59,7 +54,6 @@ public class Allowances {
 	public void setValue(double value) {
 		this.value = value;
 	}
-
 
 	public String getName() {
 		return name;

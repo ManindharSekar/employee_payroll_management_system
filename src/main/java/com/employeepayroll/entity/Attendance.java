@@ -36,7 +36,7 @@ public class Attendance {
 	private Employee employee;
 	
 	
-	  @AssertTrue(message = "date must be today's date")
+	@AssertTrue(message = "date must be today's date")
 	    public boolean isTodayDate() {
 	        return date != null && date.equals(LocalDate.now());
 	    }

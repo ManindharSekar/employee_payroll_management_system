@@ -11,5 +11,4 @@ import com.employeepayroll.entity.Employee;
 @Repository
 public interface AllowancesRepository extends JpaRepository<Allowances, Long> {
 
-
 }

@@ -13,14 +13,14 @@ import com.employeepayroll.service.PayrollService;
 @RestController
 @RequestMapping("/payRoll")
 public class PayRollController {
-	
+
 	@Autowired
 	private PayrollService payrollService;
-	
+
 	@PostMapping("/addPayRoll")
-	public ResponseEntity<String> addPayRoll(@RequestBody Payroll payRoll){
+	public ResponseEntity<String> addPayRoll(@RequestBody Payroll payRoll) {
 		return payrollService.addPayRoll(payRoll);
-		
+
 	}
 
 }

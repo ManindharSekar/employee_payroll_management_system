@@ -55,12 +55,11 @@ public class EmployeeService {
 		// TODO Auto-generated method stub
 		return employeeRepository.findById(id).orElseThrow(() -> new RecordNotFoundException("Employee Not Found"));
 	}
-	
-	public List<Allowances> getAllowancesForEmployee(Long empId) {
-	    Employee emp = employeeRepository.findById(empId)
-	                      .orElseThrow(() -> new RuntimeException("Employee not found"));
 
-	    return emp.getAllowances();
+	public List<Allowances> getAllowancesForEmployee(Long empId) {
+		Employee emp = employeeRepository.findById(empId).orElseThrow(() -> new RuntimeException("Employee not found"));
+
+		return emp.getAllowances();
 	}
 
 	public double getEmpSalary(Long id) {
@@ -68,6 +67,5 @@ public class EmployeeService {
 		Employee emp = employeeRepository.findById(id).orElseThrow(() -> new RuntimeException("Employee not found"));
 		return emp.getSalary();
 	}
-
 
 }

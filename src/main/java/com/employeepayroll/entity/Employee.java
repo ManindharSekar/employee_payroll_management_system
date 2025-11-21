@@ -3,8 +3,6 @@ package com.employeepayroll.entity;
 import java.time.LocalDate;
 import java.util.List;
 
-import org.hibernate.type.TrueFalseConverter;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -44,13 +42,13 @@ public class Employee {
 	private double salary;
 
 	@NotBlank(message = " Account NO is Required")
-	@Size(max = 8,message = "maximum 8 character")
+	@Size(max = 8, message = "maximum 8 character")
 	@Column(unique = true)
 	private String acc_No;
 
 	@NotBlank(message = "PF number is Required")
-	@Size(max = 6,message = "maximum 6 digit")
-	@Pattern(regexp = "^[0-9]+$",message = "PF number must contains numbers only digits")
+	@Size(max = 6, message = "maximum 6 digit")
+	@Pattern(regexp = "^[0-9]+$", message = "PF number must contains numbers only digits")
 	@Column(unique = true)
 	private String pf_No;
 
@@ -61,7 +59,7 @@ public class Employee {
 	@ManyToMany
 	@JoinTable(name = "emp_Allowance", joinColumns = @JoinColumn(name = "employee_id"), inverseJoinColumns = @JoinColumn(name = "allowance_id"))
 	private List<Allowances> allowances;
-	
+
 	@ManyToOne
 	private LeaveRule leaveRule;
 
