@@ -17,7 +17,6 @@ import com.employeepayroll.repository.PayrollRepository;
 @Service
 public class PayrollService {
 
-    private final LeaveRuleService leaveRuleService;
 
 	@Autowired
 	private PayrollRepository payrollRepository;
@@ -27,11 +26,10 @@ public class PayrollService {
 	@Autowired
 	private EmployeeService employeeService;
 	
+	@Autowired
 	private LeaveService leaveService;
 
-    PayrollService(LeaveRuleService leaveRuleService) {
-        this.leaveRuleService = leaveRuleService;
-    }
+ 
 
 	public ResponseEntity<String> addPayRoll(Payroll payRoll) {
 		// TODO Auto-generated method stub
