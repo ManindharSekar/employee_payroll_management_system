@@ -1,5 +1,7 @@
 package com.employeepayroll.entity;
 
+import java.time.LocalDate;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -16,37 +18,31 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Payroll {
-	
+
 	@Id
-	@GeneratedValue(strategy =GenerationType.IDENTITY)
-	private  Long id;
-	
-	@NotBlank(message = "Month is Required")
-	private String month;
-	
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+
+	@NotNull(message = "Date is Required")
+	private LocalDate date;
+
 	@NotNull(message = "Gross Salary is Required")
 	private double grossSalary;
-	
-	
+
 	private double deduction;
-	
+
 	@NotNull(message = "Net Salary is Required")
 	private double net_salary;
-	
+
+	@ManyToOne
+	private Employee employee;
+
 	public Long getId() {
 		return id;
 	}
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	public String getMonth() {
-		return month;
-	}
-
-	public void setMonth(String month) {
-		this.month = month;
 	}
 
 	public double getGrossSalary() {
@@ -81,8 +77,12 @@ public class Payroll {
 		this.employee = employee;
 	}
 
-	@ManyToOne
-	private Employee employee;
-	
+	public LocalDate getDate() {
+		return date;
+	}
+
+	public void setDate(LocalDate date) {
+		this.date = date;
+	}
 
 }

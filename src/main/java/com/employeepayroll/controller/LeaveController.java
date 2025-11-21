@@ -1,5 +1,8 @@
 package com.employeepayroll.controller;
 
+import java.time.LocalDate;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,8 +21,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping("leave")
 public class LeaveController {
 
-	@Autowired
-	private LeaveService leaveService;
+	private final LeaveService leaveService;
+
+    public LeaveController(LeaveService leaveService) {
+        this.leaveService = leaveService;
+    }
 
 	@PostMapping("/addLeave")
 	public ResponseEntity<String> addLeave(@RequestBody Leave leave) {
@@ -30,6 +36,15 @@ public class LeaveController {
 	@GetMapping("/getLeave/{id}")
 	public Leave getLeave(@PathVariable Long id) {
 		return leaveService.getLeave(id);
+	}
+	
+	@GetMapping("getEmpLeave/{id}")
+	public List<Leave> getEmpLeave(@PathVariable Long id) {
+		return leaveService.getEmpLeave(id);
+	}
+	@GetMapping("/last-month")
+	public List<Leave> getLastMonthData(@RequestParam LocalDate date) {
+	    return leaveService.getLastOneMonthData(date);
 	}
 	
 

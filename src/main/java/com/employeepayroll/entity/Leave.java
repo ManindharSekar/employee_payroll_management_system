@@ -8,6 +8,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Future;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -20,18 +21,40 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Leave {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	@NotBlank(message = "Leave type is required")
 	private String leaveType;
-	
-	@NotNull(message="Days is Required")
-	private int days;
-	
-	
+
+	@NotNull(message = "From Date is Required")
+	@Future(message = "From Date must be in Future")
+	private LocalDate fromDate;
+
+	@NotNull(message = "To Date Is Required")
+	@Future(message = "To Date must be in Future")
+	private LocalDate toDate;
+
+	private long days;
+
+	public LocalDate getFromDate() {
+		return fromDate;
+	}
+
+	public void setFromDate(LocalDate fromDate) {
+		this.fromDate = fromDate;
+	}
+
+	public LocalDate getToDate() {
+		return toDate;
+	}
+
+	public void setToDate(LocalDate toDate) {
+		this.toDate = toDate;
+	}
+
 	@ManyToOne
 	private Employee employee;
 
@@ -58,14 +81,13 @@ public class Leave {
 	public void setEmployee(Employee employee) {
 		this.employee = employee;
 	}
-	
-	public int getDays() {
+
+	public long getDays() {
 		return days;
 	}
 
-	public void setDays(int days) {
+	public void setDays(long days) {
 		this.days = days;
 	}
-
 
 }
