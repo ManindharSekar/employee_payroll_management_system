@@ -1,5 +1,7 @@
 package com.employeepayroll.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,14 +23,17 @@ public class EmployeeController {
 	@Autowired
 	private EmployeeService employeeService;
 
+	private static final Logger log=LoggerFactory.getLogger(EmployeeController.class);
+
 	@PostMapping("/addEmployee")
 	public ResponseEntity<Employee> addEmployee(@Valid @RequestBody Employee employee) {
-
+		log.info("Request received to create Employee {}",employee);
 		return employeeService.addEmployee(employee);
 	}
 
 	@GetMapping("/getEmployee/{id}")
 	public Employee getEmployee(@PathVariable Long id) {
+		log.info("Request received from employee id:{}",id);
 		return employeeService.getEmployee(id);
 
 	}

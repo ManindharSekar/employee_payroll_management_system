@@ -1,7 +1,7 @@
 package com.employeepayroll.service;
 
-import java.util.Optional;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,21 +12,24 @@ import com.employeepayroll.exception.RecordNotFoundException;
 import com.employeepayroll.repository.AllowancesRepository;
 
 @Service
-public class AllowenceService {
+public class AllowanceService {
 
 	@Autowired
 	private AllowancesRepository allowanceRepository;
+	
+	private final static Logger log=LoggerFactory.getLogger(AllowanceService.class);
 
 	public ResponseEntity<String> addAllowance(Allowances allowances) {
 		// TODO Auto-generated method stub
+		log.debug("Request body: {}",allowances);
 		allowanceRepository.save(allowances);
-		return new ResponseEntity<>("Allowences Created", HttpStatus.CREATED);
+		return new ResponseEntity<>("Allowances Created", HttpStatus.CREATED);
 	}
 
 	public Allowances getAllowance(Long id) {
 		// TODO Auto-generated method stub
 		return allowanceRepository.findById(id)
-				.orElseThrow(() -> new RecordNotFoundException("Allowence id=" + id + " not found"));
+				.orElseThrow(() -> new RecordNotFoundException("Allowance id=" + id + " not found"));
 	}
 
 	public ResponseEntity<String> updateAllowance(Long id, Allowances update) {
