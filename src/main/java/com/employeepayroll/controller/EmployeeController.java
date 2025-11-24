@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.employeepayroll.dto.EmployeeDTO;
 import com.employeepayroll.entity.Employee;
 import com.employeepayroll.service.EmployeeService;
 
@@ -26,13 +27,13 @@ public class EmployeeController {
 	private static final Logger log=LoggerFactory.getLogger(EmployeeController.class);
 
 	@PostMapping("/addEmployee")
-	public ResponseEntity<Employee> addEmployee(@Valid @RequestBody Employee employee) {
+	public ResponseEntity<EmployeeDTO> addEmployee(@Valid @RequestBody EmployeeDTO employee) {
 		log.info("Request received to create Employee {}",employee);
 		return employeeService.addEmployee(employee);
 	}
 
 	@GetMapping("/getEmployee/{id}")
-	public Employee getEmployee(@PathVariable Long id) {
+	public EmployeeDTO getEmployee(@PathVariable Long id) {
 		log.info("Request received from employee id:{}",id);
 		return employeeService.getEmployee(id);
 

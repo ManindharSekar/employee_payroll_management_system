@@ -39,22 +39,6 @@ public class Leave {
 
 	private long days;
 
-	public LocalDate getFromDate() {
-		return fromDate;
-	}
-
-	public void setFromDate(LocalDate fromDate) {
-		this.fromDate = fromDate;
-	}
-
-	public LocalDate getToDate() {
-		return toDate;
-	}
-
-	public void setToDate(LocalDate toDate) {
-		this.toDate = toDate;
-	}
-
 	@ManyToOne
 	private Employee employee;
 
@@ -88,6 +72,22 @@ public class Leave {
 
 	public void setDays(long days) {
 		this.days = days;
+	}
+	
+	public LocalDate getFromDate() {
+		return fromDate;
+	}
+
+	public void setFromDate(LocalDate fromDate) {
+		this.fromDate = fromDate;
+	}
+
+	public LocalDate getToDate() {
+		return toDate;
+	}
+
+	public void setToDate(LocalDate toDate) {
+		this.toDate = toDate;
 	}
 
 }
