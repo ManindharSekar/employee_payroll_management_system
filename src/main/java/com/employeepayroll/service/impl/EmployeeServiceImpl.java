@@ -50,7 +50,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 			logger.info("Fetching LeaveRule id: {}", id);
 			LeaveRule rule = leaveRuleRepository.findById(id)
 					.orElseThrow(() -> new RecordNotFoundException("LeaveRule Id Not Found"));
-			logger.debug("Found LeaveRule {}"+rule);
+			logger.debug("Found LeaveRule {}",rule);
 			emp.setLeaveRule(rule);
 		}
 		if (emp.getAllowances() != null && !emp.getAllowances().isEmpty()) {

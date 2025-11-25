@@ -3,7 +3,9 @@ package com.employeepayroll.dto;
 import java.time.LocalDate;
 
 import com.employeepayroll.entity.Employee;
+import lombok.Data;
 
+@Data
 public class PayrollDTO {
 
 	private Long id;
@@ -12,28 +14,13 @@ public class PayrollDTO {
 
 	private Employee employee;
 
-	public Long getId() {
-		return id;
-	}
+    //Not In Entity
+    private Long days;
+    private  double percTotal;
+    private double fixedTotal;
+    private  double netTotal;
+    private double deduction;
+    private double leaveDeduction;
 
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public LocalDate getDate() {
-		return date;
-	}
-
-	public void setDate(LocalDate date) {
-		this.date = date;
-	}
-
-	public Employee getEmployee() {
-		return employee;
-	}
-
-	public void setEmployee(Employee employee) {
-		this.employee = employee;
-	}
 
 }

@@ -18,34 +18,32 @@ import com.employeepayroll.service.LeaveRuleService;
 import lombok.extern.slf4j.Slf4j;
 
 @Service
-@Slf4j
-public class LeaveRuleServiceImpl implements LeaveRuleService{
+public class LeaveRuleServiceImpl implements LeaveRuleService {
 
 
-	@Autowired
-	private LeaveRuleRepository leaveRuleRepository;
-	
-	@Autowired
-	private ModelMapper modelMapper;
-	
-	private static final Logger log=LoggerFactory.getLogger(LeaveRuleServiceImpl.class);
+    @Autowired
+    private LeaveRuleRepository leaveRuleRepository;
 
- 
+    @Autowired
+    private ModelMapper modelMapper;
 
-	public ResponseEntity<String> addLeaveRule(LeaveRuleDTO leaveRuleDTO) {
-		// TODO Auto-generated method stub
-		LeaveRule leaveRule = modelMapper.map(leaveRuleDTO, LeaveRule.class);
-		leaveRuleRepository.save(leaveRule);
-		return new ResponseEntity<>("LeaveRule Created", HttpStatus.CREATED);
-	}
+    private static final Logger log = LoggerFactory.getLogger(LeaveRuleServiceImpl.class);
 
-	public LeaveRuleDTO getLeaveRule(Long id) {
-		// TODO Auto-generated method stub
-		log.info("Fetching Student from database. {}"+id);
-		LeaveRule leaveRule=leaveRuleRepository.findById(id)
-				.orElseThrow(() -> new RecordNotFoundException("LeaveRule id=" + id + " not found"));
-		return modelMapper.map(leaveRule, LeaveRuleDTO.class);
-	}
+
+    public ResponseEntity<String> addLeaveRule(LeaveRuleDTO leaveRuleDTO) {
+        // TODO Auto-generated method stub
+        LeaveRule leaveRule = modelMapper.map(leaveRuleDTO, LeaveRule.class);
+        leaveRuleRepository.save(leaveRule);
+        return new ResponseEntity<>("LeaveRule Created", HttpStatus.CREATED);
+    }
+
+    public LeaveRuleDTO getLeaveRule(Long id) {
+        // TODO Auto-generated method stub
+        log.info("Fetching Student from database. {}" + id);
+        LeaveRule leaveRule = leaveRuleRepository.findById(id)
+                .orElseThrow(() -> new RecordNotFoundException("LeaveRule id=" + id + " not found"));
+        return modelMapper.map(leaveRule, LeaveRuleDTO.class);
+    }
 
 
 }

@@ -17,50 +17,19 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Allowances {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-	@NotBlank(message = "Allowance Type is Required")
-	@Column(unique = true)
-	private String name;
+    @NotBlank(message = "Allowance Type is Required")
+    @Column(unique = true)
+    private String name;
 
-	@NotBlank(message = "amountType is Required")
-	private String amountType;
+    @NotBlank(message = "amountType is Required")
+    private String amountType;
 
-	@NotNull(message = "value is Required")
-	private double value;
+    @NotNull(message = "value is Required")
+    private double value;
 
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public String getAmountType() {
-		return amountType;
-	}
-
-	public void setAmountType(String amountType) {
-		this.amountType = amountType;
-	}
-
-	public double getValue() {
-		return value;
-	}
-
-	public void setValue(double value) {
-		this.value = value;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
 
 }

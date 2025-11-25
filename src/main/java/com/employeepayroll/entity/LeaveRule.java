@@ -8,8 +8,14 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class LeaveRule {
 
 	@Id
@@ -35,60 +41,6 @@ public class LeaveRule {
 	@NotNull(message = "annualLeaveLimit is Required")
 	private int annualLeaveLimit;
 
-	public int getAnnualLeaveLimit() {
-		return annualLeaveLimit;
-	}
 
-	public void setAnnualLeaveLimit(int annualLeaveLimit) {
-		this.annualLeaveLimit = annualLeaveLimit;
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public int getTotalDays() {
-		return totalDays;
-	}
-
-	public void setTotalDays(int totalDays) {
-		this.totalDays = totalDays;
-	}
-
-	public int getTotalGovLeaves() {
-		return totalGovLeaves;
-	}
-
-	public void setTotalGovLeaves(int totalGovLeaves) {
-		this.totalGovLeaves = totalGovLeaves;
-	}
-
-	public int getTotalWeekLeaves() {
-		return totalWeekLeaves;
-	}
-
-	public void setTotalWeekLeaves(int totalWeekLeaves) {
-		this.totalWeekLeaves = totalWeekLeaves;
-	}
-
-	public int getTotalWorkingDays() {
-		return totalWorkingDays;
-	}
-
-	public void setTotalWorkingDays(int totalWorkingDays) {
-		this.totalWorkingDays = totalWorkingDays;
-	}
-
-	public Year getYear() {
-		return year;
-	}
-
-	public void setYear(Year year) {
-		this.year = year;
-	}
 
 }

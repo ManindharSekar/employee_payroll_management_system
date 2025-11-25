@@ -21,22 +21,22 @@ import jakarta.validation.Valid;
 @RequestMapping("/employee")
 public class EmployeeController {
 
-	@Autowired
-	private EmployeeService employeeService;
+    @Autowired
+    private EmployeeService employeeService;
 
-	private static final Logger log=LoggerFactory.getLogger(EmployeeController.class);
+    private static final Logger log = LoggerFactory.getLogger(EmployeeController.class);
 
-	@PostMapping("/addEmployee")
-	public ResponseEntity<EmployeeDTO> addEmployee(@Valid @RequestBody EmployeeDTO employee) {
-		log.info("Request received to create Employee {}",employee);
-		return employeeService.addEmployee(employee);
-	}
+    @PostMapping("/addEmployee")
+    public ResponseEntity<EmployeeDTO> addEmployee(@Valid @RequestBody EmployeeDTO employee) {
+        log.info("Request received to create Employee {}", employee);
+        return employeeService.addEmployee(employee);
+    }
 
-	@GetMapping("/getEmployee/{id}")
-	public EmployeeDTO getEmployee(@PathVariable Long id) {
-		log.info("Request received from employee id:{}",id);
-		return employeeService.getEmployee(id);
+    @GetMapping("/getEmployee/{id}")
+    public EmployeeDTO getEmployee(@PathVariable Long id) {
+        log.info("Request received from employee id:{}", id);
+        return employeeService.getEmployee(id);
 
-	}
+    }
 
 }
