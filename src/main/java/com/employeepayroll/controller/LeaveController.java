@@ -22,37 +22,6 @@ import com.employeepayroll.service.impl.LeaveServiceImpl;
 @RequestMapping("leave")
 public class LeaveController {
 
-	private final LeaveServiceImpl leaveService;
 
-	public LeaveController(LeaveServiceImpl leaveService) {
-		this.leaveService = leaveService;
-	}
-	
-	private static final Logger log=LoggerFactory.getLogger(LeaveController.class);
-
-	@PostMapping("/addLeave")
-	public ResponseEntity<String> addLeave(@RequestBody LeaveDTO leave) {
-		log.info("Request received for creation Leave: {}",leave);
-		return leaveService.addLeave(leave);
-
-	}
-
-	@GetMapping("/getLeave/{id}")
-	public LeaveDTO getLeave(@PathVariable Long id) {
-		log.info("Request leave id:{}",id);
-		return leaveService.getLeave(id);
-	}
-
-	@GetMapping("getEmpLeave/{id}")
-	public List<LeaveDTO> getEmpLeave(@PathVariable Long id) {
-		log.info("Request employee leave id:{}"+id);
-		return leaveService.getEmpLeave(id);
-	}
-
-	@GetMapping("/last-month")
-	public List<LeaveDTO> getLastMonthData(@RequestParam LocalDate date) {
-		log.info("request last month data date is:{}",date);
-		return leaveService.getLastOneMonthData(date);
-	}
 
 }

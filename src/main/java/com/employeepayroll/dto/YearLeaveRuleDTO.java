@@ -5,7 +5,7 @@ import lombok.Data;
 import java.time.Year;
 
 @Data
-public class LeaveRuleDTO {
+public class YearLeaveRuleDTO {
 	
 	private Long id;
 	

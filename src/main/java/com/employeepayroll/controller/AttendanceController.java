@@ -1,9 +1,7 @@
 package com.employeepayroll.controller;
 
 import com.employeepayroll.dto.AttendanceDTO;
-import com.employeepayroll.entity.Attendance;
 import com.employeepayroll.service.AttendanceService;
-import com.employeepayroll.service.impl.AttendanceServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

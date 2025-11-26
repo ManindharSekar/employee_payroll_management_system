@@ -2,13 +2,12 @@ package com.employeepayroll.service;
 
 import org.springframework.http.ResponseEntity;
 
-import com.employeepayroll.dto.LeaveRuleDTO;
-import com.employeepayroll.entity.LeaveRule;
+import com.employeepayroll.dto.YearLeaveRuleDTO;
 
 public interface LeaveRuleService {
 	
-	public ResponseEntity<String> addLeaveRule(LeaveRuleDTO leaveRule);
+	public ResponseEntity<String> addLeaveRule(YearLeaveRuleDTO leaveRule);
 
-	public LeaveRuleDTO getLeaveRule(Long id);
+	public YearLeaveRuleDTO getLeaveRule(Long id);
 
 }

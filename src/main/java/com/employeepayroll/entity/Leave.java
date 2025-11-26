@@ -21,27 +21,14 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Leave {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+    private int noOfDays;
 
-	@NotBlank(message = "Leave type is required")
-	private String leaveType;
+    private int balanceLeaves;
 
-	@NotNull(message = "From Date is Required")
-	@Future(message = "From Date must be in Future")
-	private LocalDate fromDate;
-
-	@NotNull(message = "To Date Is Required")
-	@Future(message = "To Date must be in Future")
-	private LocalDate toDate;
-
-	private long days;
-
-	@ManyToOne
-	private Employee employee;
-
-
-
+    @ManyToOne
+    private Employee employee;
 }

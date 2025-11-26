@@ -13,10 +13,4 @@ import com.employeepayroll.entity.Leave;
 @Repository
 public interface LeaveRepository extends JpaRepository<Leave, Long> {
 
-
-	List<Leave> findByEmployee(Employee empId);
-
-
-	List<Leave> findBytoDateBetween(LocalDate oneMonthBefore, LocalDate inputDate);
-
 }

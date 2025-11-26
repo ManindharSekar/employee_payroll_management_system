@@ -9,13 +9,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import com.employeepayroll.dto.LeaveRuleDTO;
-import com.employeepayroll.entity.LeaveRule;
+import com.employeepayroll.dto.YearLeaveRuleDTO;
+import com.employeepayroll.entity.YearLeaveRule;
 import com.employeepayroll.exception.RecordNotFoundException;
 import com.employeepayroll.repository.LeaveRuleRepository;
 import com.employeepayroll.service.LeaveRuleService;
-
-import lombok.extern.slf4j.Slf4j;
 
 @Service
 public class LeaveRuleServiceImpl implements LeaveRuleService {
@@ -30,19 +28,19 @@ public class LeaveRuleServiceImpl implements LeaveRuleService {
     private static final Logger log = LoggerFactory.getLogger(LeaveRuleServiceImpl.class);
 
 
-    public ResponseEntity<String> addLeaveRule(LeaveRuleDTO leaveRuleDTO) {
+    public ResponseEntity<String> addLeaveRule(YearLeaveRuleDTO leaveRuleDTO) {
         // TODO Auto-generated method stub
-        LeaveRule leaveRule = modelMapper.map(leaveRuleDTO, LeaveRule.class);
+        YearLeaveRule leaveRule = modelMapper.map(leaveRuleDTO, YearLeaveRule.class);
         leaveRuleRepository.save(leaveRule);
         return new ResponseEntity<>("LeaveRule Created", HttpStatus.CREATED);
     }
 
-    public LeaveRuleDTO getLeaveRule(Long id) {
+    public YearLeaveRuleDTO getLeaveRule(Long id) {
         // TODO Auto-generated method stub
         log.info("Fetching Student from database. {}" + id);
-        LeaveRule leaveRule = leaveRuleRepository.findById(id)
+        YearLeaveRule leaveRule = leaveRuleRepository.findById(id)
                 .orElseThrow(() -> new RecordNotFoundException("LeaveRule id=" + id + " not found"));
-        return modelMapper.map(leaveRule, LeaveRuleDTO.class);
+        return modelMapper.map(leaveRule, YearLeaveRuleDTO.class);
     }
 
 

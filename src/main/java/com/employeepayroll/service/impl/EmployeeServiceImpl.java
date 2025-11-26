@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 import com.employeepayroll.dto.EmployeeDTO;
 import com.employeepayroll.entity.Allowances;
 import com.employeepayroll.entity.Employee;
-import com.employeepayroll.entity.LeaveRule;
+import com.employeepayroll.entity.YearLeaveRule;
 import com.employeepayroll.exception.RecordNotFoundException;
 import com.employeepayroll.repository.AllowancesRepository;
 import com.employeepayroll.repository.EmployeeRepository;
@@ -48,7 +48,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 		if (emp.getLeaveRule() != null) {
 			Long id = emp.getLeaveRule().getId();
 			logger.info("Fetching LeaveRule id: {}", id);
-			LeaveRule rule = leaveRuleRepository.findById(id)
+			YearLeaveRule rule = leaveRuleRepository.findById(id)
 					.orElseThrow(() -> new RecordNotFoundException("LeaveRule Id Not Found"));
 			logger.debug("Found LeaveRule {}",rule);
 			emp.setLeaveRule(rule);

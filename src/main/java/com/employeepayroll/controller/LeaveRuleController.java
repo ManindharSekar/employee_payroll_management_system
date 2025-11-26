@@ -11,8 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.employeepayroll.dto.LeaveRuleDTO;
-import com.employeepayroll.entity.LeaveRule;
+import com.employeepayroll.dto.YearLeaveRuleDTO;
 import com.employeepayroll.service.impl.LeaveRuleServiceImpl;
 
 @RestController
@@ -25,13 +24,13 @@ public class LeaveRuleController {
 	private static final Logger log=LoggerFactory.getLogger(LeaveRuleController.class);
 
 	@PostMapping("/addLeaveRule")
-	public ResponseEntity<String> addLeaveRule(@RequestBody LeaveRuleDTO leaveRuleDTO) {
+	public ResponseEntity<String> addLeaveRule(@RequestBody YearLeaveRuleDTO leaveRuleDTO) {
 		log.info("Request received for create LeaveRule {}",leaveRuleDTO);
 		return leaveRuleService.addLeaveRule(leaveRuleDTO);
 	}
 
 	@GetMapping("/getLeaveRule/{id}")
-	public LeaveRuleDTO getLeaveRule(@PathVariable Long id) {
+	public YearLeaveRuleDTO getLeaveRule(@PathVariable Long id) {
 		log.info("Request received form leaveRule id:{}"+id);
 		return leaveRuleService.getLeaveRule(id);
 	}

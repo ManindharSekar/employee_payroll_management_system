@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 import com.employeepayroll.entity.Allowances;
-import com.employeepayroll.entity.LeaveRule;
+import com.employeepayroll.entity.YearLeaveRule;
 import lombok.Data;
 
 @Data
@@ -26,5 +26,5 @@ public class EmployeeDTO {
 
 	private List<Allowances> allowances;
 
-	private LeaveRule leaveRule;
+	private YearLeaveRule leaveRule;
 }

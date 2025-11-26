@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class LeaveRule {
+public class YearLeaveRule {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

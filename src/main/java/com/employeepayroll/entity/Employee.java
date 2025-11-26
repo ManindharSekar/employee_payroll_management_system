@@ -61,7 +61,7 @@ public class Employee {
     private List<Allowances> allowances;
 
     @ManyToOne
-    private LeaveRule leaveRule;
+    private YearLeaveRule leaveRule;
 
 
 }
