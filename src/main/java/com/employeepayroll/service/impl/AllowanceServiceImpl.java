@@ -43,7 +43,7 @@ public class AllowanceServiceImpl implements AllowanceService {
 		Allowances allowance= allowanceRepository.findById(id)
 				.orElseThrow(() -> new RecordNotFoundException("Allowance id=" + id + " not found"));
 		
-		log.debug("allowence id founded successfully {}"+allowance);
+		log.debug("Allowance id founded successfully {}"+allowance);
 		return modelMapper.map(allowance, AllowancesDTO.class);
 	}
 
@@ -51,7 +51,7 @@ public class AllowanceServiceImpl implements AllowanceService {
 		// TODO Auto-generated method stub
 		Allowances allowance = modelMapper.map(update, Allowances.class);
 		Allowances findAllowence = allowanceRepository.findById(id)
-				.orElseThrow(() -> new RecordNotFoundException("Allowence id=" + id + " not found"));
+				.orElseThrow(() -> new RecordNotFoundException("Allowance id=" + id + " not found"));
 		log.info("allowance id founded");
 		findAllowence.setName(allowance.getName());
 		findAllowence.setAmountType(allowance.getAmountType());

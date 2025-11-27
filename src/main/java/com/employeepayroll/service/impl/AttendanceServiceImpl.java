@@ -32,9 +32,6 @@ public class AttendanceServiceImpl implements AttendanceService {
     @Autowired
     private ModelMapper modelMapper;
 
-
-    private LeaveDTO leaveDTO;
-
     private static final Logger log = LoggerFactory.getLogger(AttendanceServiceImpl.class);
 
     @Override
@@ -46,7 +43,7 @@ public class AttendanceServiceImpl implements AttendanceService {
         attendanceRepository.saveAll(attendance);
         for (Attendance att : attendance) {
             if (!att.isStatus()) {
-                leaveService.addLeaves(att.getEmployee(), leaveDTO);
+                leaveService.addLeaves(att.getEmployee().getId());
             }
         }
 
