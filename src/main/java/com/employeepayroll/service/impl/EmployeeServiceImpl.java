@@ -17,14 +17,14 @@ import com.employeepayroll.entity.YearLeaveRule;
 import com.employeepayroll.exception.RecordNotFoundException;
 import com.employeepayroll.repository.AllowancesRepository;
 import com.employeepayroll.repository.EmployeeRepository;
-import com.employeepayroll.repository.LeaveRuleRepository;
+import com.employeepayroll.repository.YearLeaveRuleRepository;
 import com.employeepayroll.service.EmployeeService;
 
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
 
 	@Autowired
-	private final LeaveRuleRepository leaveRuleRepository;
+	private final YearLeaveRuleRepository leaveRuleRepository;
 
 	@Autowired
 	private AllowancesRepository allowancesRepository;
@@ -35,7 +35,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 	@Autowired
 	private ModelMapper modelMapper;
 
-	EmployeeServiceImpl(LeaveRuleRepository leaveRuleRepository) {
+	EmployeeServiceImpl(YearLeaveRuleRepository leaveRuleRepository) {
 		this.leaveRuleRepository = leaveRuleRepository;
 	}
 

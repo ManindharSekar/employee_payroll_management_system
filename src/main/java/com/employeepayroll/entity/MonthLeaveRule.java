@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.time.YearMonth;
 
 @Entity
 @Data
@@ -17,7 +18,7 @@ public class MonthLeaveRule {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private LocalDate Month;
+    private YearMonth monthYear;
 
     private int totalDays;
 

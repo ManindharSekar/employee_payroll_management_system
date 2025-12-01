@@ -4,13 +4,14 @@ import com.employeepayroll.entity.YearLeaveRule;
 import lombok.Data;
 
 import java.time.LocalDate;
+import java.time.YearMonth;
 
 @Data
 public class MonthLeaveRuleDTO {
 
     private Long id;
 
-    private LocalDate Month;
+    private YearMonth monthYear;
 
     private int totalDays;
 

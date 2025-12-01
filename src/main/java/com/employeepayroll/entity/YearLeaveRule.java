@@ -1,12 +1,9 @@
 package com.employeepayroll.entity;
 
 import java.time.Year;
+import java.util.List;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -23,7 +20,6 @@ public class YearLeaveRule {
 	private Long id;
 
 	@NotNull(message = "Year is Required")
-	@Column(unique = true)
 	private Year year;
 
 	@NotNull(message = "totalDays is Required")
@@ -40,6 +36,10 @@ public class YearLeaveRule {
 
 	@NotNull(message = "annualLeaveLimit is Required")
 	private int annualLeaveLimit;
+
+    @OneToMany
+    private List<MonthLeaveRule> monthLeaveRules;
+
 
 
 

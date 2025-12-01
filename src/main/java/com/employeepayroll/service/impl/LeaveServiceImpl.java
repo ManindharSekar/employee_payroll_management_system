@@ -6,7 +6,7 @@ import com.employeepayroll.entity.Leave;
 import com.employeepayroll.exception.RecordNotFoundException;
 import com.employeepayroll.repository.EmployeeRepository;
 import com.employeepayroll.repository.LeaveRepository;
-import com.employeepayroll.repository.LeaveRuleRepository;
+import com.employeepayroll.repository.YearLeaveRuleRepository;
 import com.employeepayroll.service.LeaveService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +22,7 @@ public class LeaveServiceImpl implements LeaveService{
     private EmployeeRepository employeeRepository;
 
     @Autowired
-    private LeaveRuleRepository leaveRuleRepository;
+    private YearLeaveRuleRepository leaveRuleRepository;
 
     @Autowired
     private ModelMapper modelMapper;
