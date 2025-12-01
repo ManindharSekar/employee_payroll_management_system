@@ -43,7 +43,7 @@ public class AttendanceServiceImpl implements AttendanceService {
         attendanceRepository.saveAll(attendance);
         for (Attendance att : attendance) {
             if (!att.isStatus()) {
-                leaveService.addLeaves(att.getEmployee().getId());
+                leaveService.addLeaves(att);
             }
         }
 

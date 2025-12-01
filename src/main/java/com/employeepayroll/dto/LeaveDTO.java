@@ -15,6 +15,8 @@ public class LeaveDTO {
 
     private int balanceLeaves;
 
+    private LocalDate date;
+
     private Employee employee;
 
 

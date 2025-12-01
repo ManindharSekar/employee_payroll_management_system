@@ -29,6 +29,8 @@ public class Leave {
 
     private int balanceLeaves;
 
+    private LocalDate date;
+
     @ManyToOne
     private Employee employee;
 }

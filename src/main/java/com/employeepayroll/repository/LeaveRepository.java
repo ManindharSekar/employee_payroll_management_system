@@ -13,4 +13,8 @@ import com.employeepayroll.entity.Leave;
 @Repository
 public interface LeaveRepository extends JpaRepository<Leave, Long> {
 
+    Leave findTopByEmployeeIdOrderByIdDesc(Long employeeId);
+
+
+
 }

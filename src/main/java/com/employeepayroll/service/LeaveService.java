@@ -1,7 +1,9 @@
 package com.employeepayroll.service;
 
+import com.employeepayroll.entity.Attendance;
+
 public interface LeaveService {
 
 
-    void addLeaves(Long att);
+    void addLeaves(Attendance att);
 }
