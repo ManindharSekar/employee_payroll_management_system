@@ -28,6 +28,8 @@ public class MonthLeaveRule {
 
     private int workingDays;
 
+    private int monthLeaveLimit;
+
 
     @ManyToOne
     @JoinTable(name = "month_year_rule", joinColumns = @JoinColumn(name = "month_rule_id"), inverseJoinColumns = @JoinColumn(name = "year_rule_id"))

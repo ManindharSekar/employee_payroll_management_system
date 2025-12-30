@@ -1,10 +1,10 @@
 package com.employeepayroll.service;
 
-import com.employeepayroll.dto.LeaveDTO;
 import com.employeepayroll.entity.Attendance;
-import jakarta.validation.constraints.NotNull;
+import com.employeepayroll.entity.Employee;
+import com.employeepayroll.entity.Leave;
 
-import java.time.LocalDate;
+import java.time.Month;
 import java.util.List;
 
 public interface LeaveService {
@@ -12,5 +12,6 @@ public interface LeaveService {
 
     void addLeaves(Attendance att);
 
-    List<LeaveDTO> getLastOneMonthData(@NotNull(message = "Date is Required") LocalDate date);
+
+    List<Leave> findCurMonthEmpLeave(Employee employee, Month month, int year);
 }

@@ -1,9 +1,12 @@
 package com.employeepayroll.service.impl;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import com.employeepayroll.entity.*;
+import com.employeepayroll.repository.LeaveRepository;
 import com.employeepayroll.service.AttendanceService;
+import com.employeepayroll.service.EmployeeService;
 import com.employeepayroll.service.LeaveService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,8 +25,9 @@ public class PayrollServiceImpl implements PayrollService {
     @Autowired
     private PayrollRepository payrollRepository;
 
+
     @Autowired
-    private EmployeeServiceImpl employeeService;
+    private EmployeeService employeeService;
 
     @Autowired
     private AttendanceService attendanceService;
@@ -44,18 +48,25 @@ public class PayrollServiceImpl implements PayrollService {
         if (payRoll != null) {
             Employee employee = payRoll.getEmployee();
             double empSalary = employeeService.getEmpSalary(employee.getId());
-            List<LeaveDTO> lastOneMonthData = leaveService.getLastOneMonthData(payRoll.getDate());
-            if(yearLeaveRule.getAnnualLeaveLimit()<leave.getNoOfDays()>employee.getAttendance().){
+            LocalDate today=LocalDate.now();
 
+            List<Payroll> byMonthAndYear = payrollRepository.findByMonthAndYear(today.getMonth(), today.getYear());
+
+            if(!byMonthAndYear.isEmpty()){
+                return new ResponseEntity<>("Payment already exists in this month",HttpStatus.BAD_REQUEST);
             }
 
+            payRoll.setDate(today);
+            payRoll.setEmployee(payRoll.getEmployee());
+            payRoll.setGrossSalary(empSalary);
+            List<Leave> leavebyMonth=leaveService.findCurMonthEmpLeave(employee,today.getMonth(),today.getYear());
+
+            if(leavebyMonth>)
 
 
-            for (LeaveDTO emp : lastOneMonthData) {
-                payRollDTO.setDays(emp.getDays() + payRollDTO.getDays());
-            }
-            if (employee.getLeaveRule().getAnnualLeaveLimit() > payRollDTO.getDays()) {
-                payRollDTO.setLeaveDeduction(payRollDTO.getDays() * 200);
+            if(leave.getNoOfDays()>yearLeaveRule.getAnnualLeaveLimit()&&leave.getDate().getYear()==payRoll.getDate().getYear()){
+                int leaveCount = leave.getNoOfDays() - yearLeaveRule.getAnnualLeaveLimit();
+                payRollDTO.setLeaveDeduction(leaveCount*200);
             }
 
             List<Allowances> allowances = employeeService.getAllowancesForEmployee(employee.getId());

@@ -1,6 +1,5 @@
 package com.employeepayroll.service.impl;
 
-import com.employeepayroll.dto.LeaveDTO;
 import com.employeepayroll.entity.Attendance;
 import com.employeepayroll.entity.Employee;
 import com.employeepayroll.entity.Leave;
@@ -13,7 +12,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
+import java.time.Month;
 import java.util.List;
 
 @Service
@@ -40,6 +39,13 @@ public class LeaveServiceImpl implements LeaveService{
         leaveRepository.save(createLeave);
     }
 
+
+    @Override
+    public List<Leave> findCurMonthEmpLeave(Employee employee, Month month, int year) {
+        List<Leave> empcurleaves=leaveRepository.findCurMonthEmpLeave(employee.getId(),month,year);
+        return empcurleaves;
+    }
+
     public Leave findOrCreateLeave(Employee emp, Attendance att){
         Leave latest = leaveRepository.findTopByEmployeeIdOrderByIdDesc(emp.getId());
         Leave leave = new Leave();
@@ -60,11 +66,7 @@ public class LeaveServiceImpl implements LeaveService{
         return leave;
     }
 
-    public List<LeaveDTO> getLastOneMonthData(LocalDate inputDate) {
-        LocalDate oneMonthBefore = inputDate.minusMonths(1);
-        return leaveRepository.findBytoDateBetween(oneMonthBefore, inputDate);
 
-    }
 
 
 }

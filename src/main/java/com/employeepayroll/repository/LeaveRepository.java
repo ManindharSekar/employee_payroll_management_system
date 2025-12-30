@@ -1,15 +1,13 @@
 package com.employeepayroll.repository;
 
-import java.time.LocalDate;
+import java.time.Month;
 import java.util.List;
-import java.util.Optional;
 
-import com.employeepayroll.dto.LeaveDTO;
-import com.employeepayroll.entity.Attendance;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import com.employeepayroll.entity.Employee;
 import com.employeepayroll.entity.Leave;
 
 @Repository
@@ -18,5 +16,7 @@ public interface LeaveRepository extends JpaRepository<Leave, Long> {
     Leave findTopByEmployeeIdOrderByIdDesc(Long employeeId);
 
 
-    List<LeaveDTO> findBytoDateBetween(LocalDate oneMonthBefore, LocalDate inputDate);
+
+    @Query("SELECT l FROM Leave l WHERE FUNCTION('MONTH', l.date) = :month AND FUNCTION('YEAR', l.date) = :year")
+    List<Leave> findCurMonthEmpLeave(Long employee, @Param("month") Month month, @Param("year") int year);
 }

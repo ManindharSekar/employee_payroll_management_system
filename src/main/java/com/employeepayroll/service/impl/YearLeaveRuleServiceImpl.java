@@ -23,7 +23,7 @@ public class YearLeaveRuleServiceImpl implements YearLeaveRuleService {
         if(yearLeaveRule==null) {
         YearLeaveRule yearLeave = new YearLeaveRule();
         yearLeave.setYear(Year.of(monthLeaveRule.getMonthYear().getYear()));
-        yearLeave.setAnnualLeaveLimit(30);
+        yearLeave.setAnnualLeaveLimit(monthLeaveRule.getMonthLeaveLimit());
         yearLeave.setTotalWeekLeaves(monthLeaveRule.getWeekEndLeaves());
         yearLeave.setTotalGovLeaves(monthLeaveRule.getGovLeaves());
         yearLeave.setTotalWorkingDays(monthLeaveRule.getWorkingDays());
@@ -37,6 +37,7 @@ public class YearLeaveRuleServiceImpl implements YearLeaveRuleService {
             updateLeaveRule.setTotalGovLeaves(updateLeaveRule.getTotalGovLeaves()+monthLeaveRule.getGovLeaves());
             updateLeaveRule.setTotalWorkingDays(updateLeaveRule.getTotalWorkingDays()+monthLeaveRule.getWorkingDays());
             updateLeaveRule.setTotalDays(updateLeaveRule.getTotalWorkingDays()+ updateLeaveRule.getTotalWeekLeaves()+ updateLeaveRule.getTotalGovLeaves());
+            updateLeaveRule.setAnnualLeaveLimit(updateLeaveRule.getAnnualLeaveLimit()+monthLeaveRule.getMonthLeaveLimit());
             yearLeaveRuleRepository.save(updateLeaveRule);
         }
     }

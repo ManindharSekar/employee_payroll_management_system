@@ -21,5 +21,7 @@ public class MonthLeaveRuleDTO {
 
     private int workingDays;
 
+    private int monthLeaveLimit;
+
     private YearLeaveRule yearLeaveRule;
 }

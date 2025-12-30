@@ -18,5 +18,5 @@ public interface AttendanceService {
 
     AttendanceDTO getAttendance(Long id);
 
-    List<AttendanceDTO> getLastOneMonthData(@NotNull(message = "Date is Required") LocalDate date);
+
 }
